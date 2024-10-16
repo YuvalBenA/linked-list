@@ -1,0 +1,4 @@
+C:\BarakPractice\linked-list\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.csprojAssemblyReference.cache
+C:\BarakPractice\linked-list\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfoInputs.cache
+C:\BarakPractice\linked-list\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfo.cs
+C:\BarakPractice\linked-list\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.csproj.CoreCompileInputs.cache
