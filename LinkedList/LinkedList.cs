@@ -67,9 +67,9 @@ namespace LinkedList
             try
             {
                 Last.Next = item as Node<T>;
-                Last = item as Node<T>;
+                Last = Last.Next;
             }
-            catch (Exception ex)
+            catch (WrongTypeException ex)
             {
                 throw new WrongTypeException("Item needs to be a Node.");
             }
@@ -77,17 +77,35 @@ namespace LinkedList
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Head = null;
+            Last = null;
         }
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Node<T> searchedNode = item as Node<T>;
+                Node<T> currentNode = Head;
+                while (currentNode.Next!=null)
+                {
+                    if (currentNode == searchedNode)
+                    {
+                        return true;
+                    }
+                    currentNode = currentNode.Next;
+                }
+                return currentNode == searchedNode;
+            }
+            catch (WrongTypeException  ex)
+            {
+                throw new WrongTypeException("Item needs to be a Node.");
+            }
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+           
         }
 
         public IEnumerator<T> GetEnumerator()
