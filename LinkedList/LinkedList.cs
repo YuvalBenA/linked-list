@@ -105,7 +105,32 @@ namespace LinkedList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-           
+           if(arrayIndex<array.Length && arrayIndex>-1)
+            {
+                Array.Resize(ref array, array.Length+Count);
+                T[] leftovers = new T[Count];
+                int currentIndex = arrayIndex;
+                Node<T> currentNode = Head;
+                for (int i= 0; i<leftovers.Length; i++)
+                {
+                    leftovers[i] = array[currentIndex];
+                    array[currentIndex] = currentNode.Value;
+                    currentNode = currentNode.Next;
+                    currentIndex ++;
+                }
+                for (int i=currentIndex; i<array.Length; i++)
+                {
+                    if(array[i]==null)
+                    {
+                        for(int j=0; j<leftovers.Length; j++)
+                        {
+                            array[i] = leftovers[j];
+                            i++;
+                        }
+                        break;
+                    }
+                }
+            }
         }
 
         public IEnumerator<T> GetEnumerator()
