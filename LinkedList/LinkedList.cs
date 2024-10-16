@@ -69,9 +69,9 @@ namespace LinkedList
                 Last.Next = item as Node<T>;
                 Last = item as Node<T>;
             }
-            catch (Exception ItemOfWrongeTypeException)
+            catch (Exception ex)
             {
-                ItemOfWrongeTypeException.Message;
+                throw new WrongTypeException("Item needs to be a Node.");
             }
         }
 
