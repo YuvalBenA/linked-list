@@ -13,11 +13,11 @@ namespace LinkedList
         {
             get
             {
-
+                return GetNodeByIndex(index)
             }
             set
             {
-
+                GetNodeByIndex(index) = value
             }
         }
 
@@ -25,9 +25,54 @@ namespace LinkedList
 
         public bool IsReadOnly { get; }
 
+        private Node<T> GetNodeByIndex(int index)
+        {
+            if (index < Count && index > 0)
+            {
+                int placement = 0;
+                Node<T> currentNode = Head;
+                while (placement!=index)
+                {
+                    currentNode = currentNode.Next
+                }
+                return currentNode;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException();
+            }
+        }
+        
+        private int GetLength()
+        {
+            if(Head==null)
+            {
+                return 0;
+            }
+            
+            int countNodes = 1;
+            Node<T> currentNode = Head;
+            
+            while (currentNode.Next!=null)
+            {
+                currentNode = currentNode.Next;
+                countNodes++;
+            }
+            
+            return countNodes;
+        }
+        
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Last.Next = item as Node<T>;
+                Last = item as Node<T>;
+            }
+            catch (Exception ItemOfWrongeTypeException)
+            {
+                ItemOfWrongeTypeException.Message;
+            }
         }
 
         public void Clear()
