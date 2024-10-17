@@ -135,7 +135,12 @@ namespace LinkedList
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+             Node<T> currentNode = Head;
+             while (currentNode.Next!=null)
+             {
+                yield return currentNode.Value;
+                currentNode = currentNode.Next;
+             }
         }
 
         public int IndexOf(T item)
@@ -160,7 +165,7 @@ namespace LinkedList
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
