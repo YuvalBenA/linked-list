@@ -69,9 +69,9 @@ namespace LinkedList
                 Last.Next = item as Node<T>;
                 Last = Last.Next;
             }
-            catch (WrongTypeException ex)
+            catch (InvalidCastException ex)
             {
-                throw new WrongTypeException("Item needs to be a Node.");
+                throw new InvalidCastException("Item needs to be a Node.");
             }
         }
 
@@ -97,9 +97,9 @@ namespace LinkedList
                 }
                 return currentNode == searchedNode;
             }
-            catch (WrongTypeException  ex)
+            catch (InvalidCastException ex)
             {
-                throw new WrongTypeException("Item needs to be a Node.");
+                throw new InvalidCastException("Item needs to be a Node.");
             }
         }
 
@@ -145,7 +145,30 @@ namespace LinkedList
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                Node<T> searchedNode = item as Node<T>;
+                Node<T> currentNode = Head;
+                int currentIndex = 0;
+    =           while (currentNode.Next!=null)
+                {
+                    if (currentNode == searchedNode)
+                    {
+                        return currentIndex;
+                    }
+                    currentIndex ++;
+                    currentNode = currentNode.Next;
+                }
+                if (currentNode == searchedNode)
+                {
+                     return currentIndex;
+                }
+                return -1;
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new InvalidCastException("Item needs to be a Node.");
+            }
         }
 
         public void Insert(int index, T item)
@@ -165,7 +188,7 @@ namespace LinkedList
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return GetEnumerator(); 
         }
     }
 }

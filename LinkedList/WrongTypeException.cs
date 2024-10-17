@@ -4,6 +4,7 @@ using System.Text;
 
 namespace LinkedList
 {
+    
     class WrongTypeException : SystemException
     {
         public WrongTypeException(): base("The item is of the wrong type.") {}

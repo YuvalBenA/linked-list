@@ -15,7 +15,7 @@ namespace LinkedList
             Value = value;
             Next = null;
         }
-        
+                
         public Node(T value, Node<T> next)
         {
             Value = value;
