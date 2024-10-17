@@ -173,17 +173,46 @@ namespace LinkedList
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                GetNodeByIndex(index) = item as Node<T>;
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new InvalidCastException("Item needs to be a Node.");
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                throw new IndexOutOfRangeException();
+            }
         }
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int previousIndex = IndexOf(item) -1;
+                Node<T> selectedNode = item as Node<T>;
+                GetNodeByIndex(previousIndex).Next = selectedNode.Next;
+            }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException("Node not found in this linked list.");
+            }
+
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Node<T> previousNode = GetNodeByIndex(index-1);
+                previousNode.Next = previousNode.Next.Next;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                throw new IndexOutOfRangeException();
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
